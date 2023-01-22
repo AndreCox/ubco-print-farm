@@ -29,11 +29,22 @@ The next tool is a `.eslintrc.js` file when you run `yarn lint` it will scan all
 
 ## Running the Program
 
-### Documentation
+### Preview Documentation
+
+`yarn docs` Opens documentation in new browser window
+Live preview of changes made in the `\apps\docs` Folder
+
+### Start all applications
+
+`yarn dev` Runs all programs in parallel in dev mode
+
+### Lint all code
+
+`yarn lint` Runs linting to check for syntactical consistency
 
 ## Understanding the Repository Structure
 
-This project uses a Monorepo, This is done as it makes this project very scalable and we can also share modules, and files across multiple projects resulting in minimal code reuse.
+This project uses a Monorepo, This is done as it makes this project very scalable and we can also share modules, and files across multiple projects resulting in minimal code reuse. The software I'm using is called [TurboRepo](https://turbo.build/repo)
 
 #### Notable Directories and files
 
