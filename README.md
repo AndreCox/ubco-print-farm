@@ -63,3 +63,7 @@ Look here if there are any files you are not familiar with.
 └── package.json               # Contains information about version, and scripts that can be run.
 
 ```
+
+# Architecture Overview
+
+![A diagram of the infrastructure](./architecture.svg)
