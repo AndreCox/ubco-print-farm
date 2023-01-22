@@ -1,27 +1,15 @@
 {
   "name": "docs",
-  "version": "0.0.0",
-  "private": true,
+  "version": "1.0.0",
+  "description": "General Docs For the UBCO Print Farm project",
+  "main": "index.html",
+  "author": "Andre Cox",
+  "license": "GPLv3",
+  "private": false,
   "scripts": {
-    "dev": "next dev --port 3001",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
+    "docs": "docsify serve . -p 2999"
   },
   "dependencies": {
-    "next": "^13.1.1",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "ui": "*"
-  },
-  "devDependencies": {
-    "@babel/core": "^7.0.0",
-    "eslint": "7.32.0",
-    "eslint-config-custom": "*",
-    "tsconfig": "*",
-    "@types/node": "^17.0.12",
-    "@types/react": "^18.0.22",
-    "@types/react-dom": "^18.0.7",
-    "typescript": "^4.5.3"
+    "docsify-cli": "^4.4.4"
   }
 }
