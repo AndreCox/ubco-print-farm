@@ -1,73 +1,23 @@
-# Turborepo starter
+# UBCO Print Farm 
 
-This is an official Yarn v1 starter turborepo.
+## About
+This project aims to create a print farm for the UBCO Makerspace and document all steps so that it can be expanded and updated in the future. This repo contains all software and documentation that has been written to make this possible. This project can also be useful for any other people who need to create a print farm in a network environment that has a secured WiFi such as a university or school. 
 
-## What's inside?
+## Documentation
+You can find all [documentation here](https://andrecox.github.io/ubco-print-farm)
 
-This turborepo uses [Yarn](https://classic.yarnpkg.com/) as a package manager. It includes the following packages/apps:
+If you are a part of the UBCO Makerspace and need to repair or upgrade, the print farm you should check the docs.
 
-### Apps and Packages
+## Problems to Overcome
 
-- `docs`: a [Next.js](https://nextjs.org/) app
-- `web`: another [Next.js](https://nextjs.org/) app
-- `ui`: a stub React component library shared by both `web` and `docs` applications
-- `eslint-config-custom`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `tsconfig`: `tsconfig.json`s used throughout the monorepo
+- 🌐 Devices on Wifi can't communicate with each other.
+- 🖥️ Can't port forward to the internet. 
+- 🧑‍💻 Need user friendly way for people to request prints.
+- 💪 Flexible and powerful for integration into other applications.
 
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
+## Understanding the Repository Structure
+This project uses a Monorepo, This is done as it makes this project very scalable and we can also share modules, and files across multiple projects resulting in minimal code reuse. 
 
-### Utilities
 
-This turborepo has some additional tools already setup for you:
 
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
 
-### Build
-
-To build all apps and packages, run the following command:
-
-```
-cd my-turborepo
-yarn run build
-```
-
-### Develop
-
-To develop all apps and packages, run the following command:
-
-```
-cd my-turborepo
-yarn run dev
-```
-
-### Remote Caching
-
-Turborepo can use a technique known as [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
-
-By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup), then enter the following commands:
-
-```
-cd my-turborepo
-npx turbo login
-```
-
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
-
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your turborepo:
-
-```
-npx turbo link
-```
-
-## Useful Links
-
-Learn more about the power of Turborepo:
-
-- [Tasks](https://turbo.build/repo/docs/core-concepts/monorepos/running-tasks)
-- [Caching](https://turbo.build/repo/docs/core-concepts/caching)
-- [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching)
-- [Filtering](https://turbo.build/repo/docs/core-concepts/monorepos/filtering)
-- [Configuration Options](https://turbo.build/repo/docs/reference/configuration)
-- [CLI Usage](https://turbo.build/repo/docs/reference/command-line-reference)
