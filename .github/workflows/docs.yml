@@ -15,16 +15,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: 16
-
-      - name: Install dependencies
-        run: npm install -g docsify-cli
-
-      - name: Build docs
-        run: npx docsify-cli init /apps/docs
 
       - name: Deploy
         uses: s0/git-publish-subdir-action@develop
