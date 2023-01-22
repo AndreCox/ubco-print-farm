@@ -7,9 +7,11 @@
   "license": "GPLv3",
   "private": false,
   "scripts": {
-    "docs": "docsify serve . -p 2999"
+    "docs": "open-cli http://localhost:2999 && docsify serve . -p 2999"
   },
-  "dependencies": {
+  "dependencies": {},
+  "devDependencies": {
+    "open-cli": "^7.1.0",
     "docsify-cli": "^4.4.4"
   }
 }
