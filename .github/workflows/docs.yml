@@ -7,6 +7,8 @@ on:
     paths:
       - "apps/docs/**"
 
+  workflow_dispatch:
+
 jobs:
   build:
     runs-on: ubuntu-latest
