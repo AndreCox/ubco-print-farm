@@ -1,7 +1,10 @@
-import Head from "next/head";
-import Image from "next/image";
-import Link from "next/link";
-import styles from "../styles/Home.module.css";
+import Head from 'next/head'
+import Image from 'next/image'
+import Link from 'next/link'
+import styles from '../styles/Home.module.css'
+
+import { Card, CardBody } from '@material-tailwind/react'
+import image from './../assets/images/image.jpg'
 
 export default function Home() {
   return (
@@ -12,66 +15,36 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="min-h-screen p-4 flex flex-1 flex-col justify-center items-center text-4xl">
-        <h1 className="font-bold text-center">
-          Welcome to{" "}
-          <a
-            href="https://github.com/andrecox/next-template"
-            className="text-blue-500 underline decoration-transparent hover:decoration-blue-500 transition-all"
-          >
-            Next Template!
-          </a>
-        </h1>
-        <h2 className="mt-2">
-          Powered by{" "}
-          <a
-            href="https://nextjs.org"
-            className="text-blue-500 underline decoration-transparent hover:decoration-blue-500 transition-all"
-          >
-            Next.js
-          </a>
-        </h2>
-
-        <p className="text-center m-16 text-[1.5rem]">
-          Get started by editing{" "}
-          <code className="bg-[#fafafa] rounded-md p-[0.75rem] font-mono text-[1.1rem]">
-            pages/index.js
-          </code>
-        </p>
-
-        <div className="flex items-center justify-center flex-wrap max-w-[800px]">
-          <a href="https://tailwindcss.com" className={styles.card}>
-            <h2>Tailwind CSS &rarr;</h2>
-            <p>
-              Learn about Tailwind keeps the app size small while still being
-              easy to use.
-            </p>
-          </a>
-
-          <a href="https://mobx.js.org/README.html" className={styles.card}>
-            <h2>MobX &rarr;</h2>
-            <p>A powerful way to manage state without tons of boilerplate!</p>
-          </a>
-
-          <a href="https://pages.github.com/" className={styles.card}>
-            <h2>Github Pages &rarr;</h2>
-            <p>Build a static site and deploy it using Github Actions.</p>
-          </a>
-
-          <a href="https://capacitorjs.com" className={styles.card}>
-            <h2>Capacitor JS &rarr;</h2>
-            <p>Build your web app for mobile with access to native features.</p>
-          </a>
-        </div>
-        <p className="text-center mt-16 text-[1.5rem]">
-          MobX state management built in!
-        </p>
-        <Link href="/mobx">
-          <div className="text-blue-500 under text-xl underline decoration-transparent  hover:decoration-blue-500 transition-all">
-            Check it out here
+      <main className="min-h-screen p-4 items-center text-4xl">
+        <h1>Dashboard</h1>
+        <div className="flex flex-row">
+          <div className="grid grid-flow-row-dense grid-rows-3 gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4  w-full">
+            {Array(9)
+              .fill(0)
+              .map((_, i) => (
+                <Card
+                  onResize={undefined}
+                  onResizeCapture={undefined}
+                  className="w-fit"
+                >
+                  <CardBody onResize={undefined} onResizeCapture={undefined}>
+                    <h2 className="text-2xl">Card Title</h2>
+                    <Image
+                      src={image}
+                      alt=""
+                      width={400}
+                      height={400}
+                      className="rounded-lg"
+                    />
+                  </CardBody>
+                </Card>
+              ))}
           </div>
-        </Link>
+          <div className="bg-gray-500 w-52">
+            <h1>Side Bar</h1>
+          </div>
+        </div>
       </main>
     </div>
-  );
+  )
 }
