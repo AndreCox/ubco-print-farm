@@ -27,9 +27,23 @@
         name: 'UBCO Print Farm',
         repo: 'AndreCox/ubco-print-farm',
         coverpage: true,
+        homepage: 'overview.md',
+        loadSidebar: true,
+        auto2top: true,
+        maxLevel: 3,
+        subMaxLevel: 3,
+        executeScript: true,
+
+        search: {
+          paths: 'auto',
+        },
       }
     </script>
     <!-- Docsify v4 -->
-    <script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
+    <script src="https://cdn.jsdelivr.net/npm/docsify@4/lib/docsify.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/docsify@4/lib/plugins/search.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/docsify-themeable@0/dist/js/docsify-themeable.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/docsify@4/lib/plugins/zoom-image.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/docsify-pagination@2/dist/docsify-pagination.min.js"></script>
   </body>
 </html>
