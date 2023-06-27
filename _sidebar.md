@@ -1,2 +1,4 @@
-- [Overview](overview)
-- [Development](development)
+- [Overview 🗺️](overview)
+- [Hardware ⚙️](hardware)
+- [Raspberry Pi's 🥧](raspberrypis)
+- [Development 💻](development)
