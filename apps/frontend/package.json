@@ -1,0 +1,43 @@
+{
+  "name": "frontend",
+  "author": "Andre Cox",
+  "description": "The client app for viewing information from the print farm",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "yarn open-browser && next dev -p 3001",
+    "dev:no-open": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "export": "next export",
+    "lint": "next lint",
+    "open-browser": "open-cli http://localhost:3001",
+    "frontend": "yarn dev"
+  },
+  "dependencies": {
+    "@material-tailwind/react": "^1.2.5",
+    "framer-motion": "^8.5.3",
+    "mobx": "^6.6.1",
+    "mobx-react-lite": "^3.4.0",
+    "next": "^13.0.7",
+    "open-cli": "^7.0.1",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "surrealdb.js": "^0.8.2",
+    "tsconfig": "*"
+  },
+  "devDependencies": {
+    "@tauri-apps/cli": "^1.0.3",
+    "@types/node": "^18.0.3",
+    "@types/react": "^18.0.15",
+    "autoprefixer": "^10.4.7",
+    "concurrently": "^7.2.2",
+    "eslint-config-custom": "*",
+    "postcss": "^8.4.14",
+    "tailwindcss": "^3.1.4",
+    "typescript": "^4.7.4"
+  },
+  "next-gen": {
+    "id": "4326dec8a92b394498ebe4f542833e5a"
+  }
+}

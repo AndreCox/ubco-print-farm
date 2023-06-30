@@ -13,6 +13,18 @@
     },
     "docs": {
       "cache": false
+    },
+    "backend": {
+      "cache": false,
+      "env": ["SURREAL_DB_HOST", "SURREAL_DB_PASSWORD", "SURREAL_DB_USER"]
+    },
+    "database": {
+      "cache": false,
+      "env": ["SURREAL_DB_PASSWORD", "SURREAL_DB_USER"]
+    },
+    "frontend": {
+      "cache": false,
+      "env": ["SURREAL_DB_HOST"]
     }
   }
 }

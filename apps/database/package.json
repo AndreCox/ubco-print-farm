@@ -1,0 +1,16 @@
+{
+  "name": "database",
+  "version": "1.0.0",
+  "description": "Database For the UBCO Print Farm project SurrealDB",
+  "author": "Andre Cox",
+  "license": "GPLv3",
+  "private": false,
+  "scripts": {
+    "database": "docker-compose up -d"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "open-cli": "^7.1.0",
+    "docsify-cli": "^4.4.4"
+  }
+}
