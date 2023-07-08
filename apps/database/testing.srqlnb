@@ -1,0 +1,1 @@
+[{"kind":2,"language":"surrealql","value":"DEFINE TABLE user SCHEMAFULL PERMISSIONS FOR select, update create, delete NONE;\r\nDEFINE FIELD printQueue ON user TYPE array;\r\n"},{"kind":2,"language":"surrealql","value":"CREATE user SET printQueue = [1];"},{"kind":2,"language":"surrealql","value":"SELECT * FROM user\r\n"}]

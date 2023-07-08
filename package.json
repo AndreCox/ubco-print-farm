@@ -8,10 +8,11 @@
   ],
   "scripts": {
     "build": "turbo run build",
-    "dev": "turbo run dev --parallel",
+    "dev": "dotenv -- turbo run dev --parallel",
     "docs": "turbo run docs",
     "backend": "dotenv -- turbo run backend",
     "database": "dotenv -- turbo run database",
+    "storage": "dotenv -- turbo run storage",
     "frontend": "dotenv -- turbo run frontend",
     "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\""

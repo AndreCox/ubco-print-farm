@@ -16,15 +16,23 @@
     },
     "backend": {
       "cache": false,
-      "env": ["SURREAL_DB_HOST", "SURREAL_DB_PASSWORD", "SURREAL_DB_USER"]
+      "env": [
+        "NEXT_PUBLIC_SURREAL_DB_HOST",
+        "SURREAL_DB_PASSWORD",
+        "SURREAL_DB_USER"
+      ]
     },
     "database": {
       "cache": false,
       "env": ["SURREAL_DB_PASSWORD", "SURREAL_DB_USER"]
     },
+    "storage": {
+      "cache": false,
+      "env": ["MINIO_USER, MINIO_PASSWORD"]
+    },
     "frontend": {
       "cache": false,
-      "env": ["SURREAL_DB_HOST"]
+      "env": ["NEXT_PUBLIC_SURREAL_DB_HOST"]
     }
   }
 }

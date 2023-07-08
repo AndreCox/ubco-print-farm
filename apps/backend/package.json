@@ -5,6 +5,7 @@
   "author": "Andre Cox",
   "license": "GPLv3",
   "private": false,
+  "type": "commonjs",
   "scripts": {
     "dev": "concurrently \"npx tsc --watch\" \"nodemon -q dist/index.js\"",
     "backend": "concurrently \"npx tsc --watch\" \"nodemon -q dist/index.js\"",
@@ -12,14 +13,23 @@
     "start": "node dist/index.js"
   },
   "dependencies": {
+    "cors": "^2.8.5",
     "express": "^4.18.2",
+    "express-fileupload": "^1.4.0",
+    "file-type": "^18.5.0",
+    "md5": "^2.3.0",
+    "minio": "^7.1.1",
+    "mjpeg-proxy": "^0.3.0",
     "nodemon": "^2.0.22",
     "surrealdb.js": "^0.8.2",
     "ts-node": "^10.9.1",
     "tsconfig": "*"
   },
   "devDependencies": {
+    "@types/cors": "^2.8.13",
     "@types/express": "^4.17.17",
+    "@types/express-fileupload": "^1.4.1",
+    "@types/md5": "^2.3.2",
     "@types/node": "^20.3.2",
     "docsify-cli": "^4.4.4",
     "open-cli": "^7.1.0"

@@ -1,0 +1,16 @@
+{
+  "name": "storage",
+  "version": "1.0.0",
+  "description": "Object Storage For the UBCO Print Farm project Minio",
+  "author": "Andre Cox",
+  "license": "GPLv3",
+  "private": false,
+  "scripts": {
+    "storage": "docker-compose up -d"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "open-cli": "^7.1.0",
+    "docsify-cli": "^4.4.4"
+  }
+}

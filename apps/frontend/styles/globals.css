@@ -10,11 +10,20 @@ body {
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
+html {
+  @apply bg-blue-gray-50;
+}
+
 a {
   color: inherit;
   text-decoration: none;
+  color: rgb(97, 97, 97);
 }
 
 * {
   box-sizing: border-box;
+}
+
+h1 {
+  color: rgb(97, 97, 97);
 }
