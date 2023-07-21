@@ -80,7 +80,7 @@ export function PrintQueue() {
           // convert the string to a object
           // if the print is empty return
           if (!print) return <></>
-          const printObject = JSON.parse(print)
+
           return (
             <div
               key={index}
@@ -88,19 +88,16 @@ export function PrintQueue() {
             >
               <div className="w-full">
                 <Typography color="blue-gray" className="text-center ">
-                  {printObject.fileName}
+                  {print.fileName}
                 </Typography>
               </div>
               <div className="w-full">
                 <Typography color="blue-gray" className="text-center">
-                  {printObject.status}
+                  {print.status}
                 </Typography>
               </div>
               <div className="w-full">
-                <Typography
-                  color="blue-gray text-center"
-                  className="text-center"
-                >
+                <Typography color="blue-gray" className="text-center">
                   NaN
                 </Typography>
               </div>
@@ -108,7 +105,7 @@ export function PrintQueue() {
                 className=""
                 style={{
                   visibility:
-                    printObject.status === 'printing' ? 'hidden' : 'visible',
+                    print.status === 'printing' ? 'hidden' : 'visible',
                 }}
                 onClick={() => {
                   console.log('cancel print: ' + index)
@@ -128,9 +125,12 @@ export function PrintQueue() {
                         )
                         .then((res) => {
                           // update the print queue so user sees results immediately
+                          console.log(res)
                           updatePrintQueue(database, setPrintQueue)
                         })
-                        .catch((err) => {})
+                        .catch((err) => {
+                          console.log(err)
+                        })
                     })
                 }}
               >
