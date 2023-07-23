@@ -41,3 +41,5 @@ You can find a link to the parts and some documentation about these parts here.
 https://www.printables.com/model/9284-prusa-i3-octoprint-raspberry-pi-case
 
 For this part I printed it in ASA which is very durable.
+
+![3D printed Case](https://media.printables.com/media/prints/9284/images/999924_9e40cd35-e9e9-4d74-8096-e8a45c03ccb3/thumbs/inside/1600x1200/jpg/img_5255.webp)
