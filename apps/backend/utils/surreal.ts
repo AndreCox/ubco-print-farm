@@ -107,6 +107,7 @@ export async function initDB() {
     await db.query('DEFINE FIELD name ON printer TYPE string')
     await db.query('DEFINE FIELD ip ON printer TYPE string')
     await db.query('DEFINE FIELD apiKey ON printer TYPE string')
+    await db.query('DEFINE FIELD material ON printer TYPE string')
     await db.query('DEFINE FIELD printerInfo ON printer FLEXIBLE TYPE object')
 
     // now we create a new database for storing print jobs, this database will aggregate all the print jobs from all the users and store them in one place
@@ -123,6 +124,22 @@ export async function initDB() {
     await db.query('DEFINE FIELD status ON printJob TYPE string')
     await db.query('DEFINE FIELD email ON printJob TYPE string')
     await db.query('DEFINE FIELD time ON printJob TYPE datetime')
+
+    /*******************************************************************
+     *    CREATE A NEW DATABASE FOR STORING THE SLICED PRINT QUEUE     *
+     * THIS WILL HOLD THE GCODE FILE, MATERIAL, AND OTHER INFORMATION. *
+     *******************************************************************/
+    await db.use({
+      ns: 'PrintFarm',
+      db: 'printQueue',
+    })
+    await db.query('DEFINE TABLE printQueue SCHEMAFULL')
+    await db.query('DEFINE FIELD gcodeName ON printQueue TYPE string')
+    await db.query('DEFINE FIELD fileName ON printQueue TYPE string')
+    await db.query('DEFINE FIELD status ON printQueue TYPE string')
+    await db.query('DEFINE FIELD email ON printQueue TYPE string')
+    await db.query('DEFINE FIELD time ON printQueue TYPE datetime')
+    await db.query('DEFINE FIELD material ON printQueue TYPE string')
 
     console.log('Database authenticated!')
   } catch (err) {
