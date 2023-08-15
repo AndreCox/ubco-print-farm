@@ -84,6 +84,7 @@ app.get('/video/:id', async (req, res) => {
   console.log(ip[0].result)
   try {
     new MjpegProxy(
+      // @ts-ignore
       `http://${ip[0].result[0].ip}/webcam/?action=stream`
     ).proxyRequest(
       // @ts-ignore
@@ -216,6 +217,96 @@ app.post('/admin/testConnection', async (req: Request, res: Response) => {
   }
 
   return res.status(200).send('Connection successful')
+})
+
+app.post('/admin/upload', async (req: Request, res: Response) => {
+  console.log('POST /admin/upload')
+  // this endpoint will be used when an admin uploads a sliced file to the server
+  // we will take in the userPrintQueueID which will be used to find file info in the db
+
+  const { jwt, userPrintQueueID, printQueueIndex } = req.body
+  if (!jwt || !userPrintQueueID || !printQueueIndex) {
+    return res.status(400).send('Missing fields')
+  }
+
+  // next we need to check if the user is authenticated
+  const tempDB = new Surreal(process.env.NEXT_PUBLIC_SURREAL_DB_HOST)
+  await tempDB.use({ ns: 'PrintFarm', db: 'users' })
+
+  try {
+    await tempDB.authenticate(jwt)
+  } catch (err) {
+    return res.status(401).send('Unauthorized')
+  }
+
+  // now we'll check if the user is an admin
+  const decodedJwt = decodeJwt(jwt)
+  if (!decodedJwt) {
+    return res.status(401).send('Unauthorized')
+  }
+
+  let userId = decodedJwt.ID
+
+  const admin = await tempDB.query('SELECT admin FROM $userID', {
+    userID: userId,
+  })
+  // @ts-expect-error
+  if (!admin[0].result[0].admin) {
+    return res.status(401).send('Unauthorized')
+  }
+
+  // now we know the user is an admin, we will get the print info from the db
+  await db.use({ ns: 'PrintFarm', db: 'printers' })
+  let printInfo = await db.query('SELECT * FROM $id', { id: userPrintQueueID })
+
+  // @ts-expect-error
+  if (printInfo[0].result.length === 0) {
+    return res.status(400).send('Print not found')
+  }
+
+  // upload the file and check if it is a gcode file
+  // make sure that gcode exists on the files object
+  if (!req.files) {
+    return res.status(400).send('No file uploaded')
+  }
+  if (!req.files.gcode) {
+    return res.status(400).send('No file uploaded')
+  }
+
+  // @ts-expect-error
+  const hash = md5(req.files.gcode.data)
+  // @ts-expect-error
+  const fileName = req.files.gcode.name
+  // now we have the file hash, we want to construct the stl file name
+  // this will be the gcode name with the hash appended to it and the .stl extension
+  let fileNamePrefix = fileName.replace('.gcode', '')
+  fileNamePrefix = fileNamePrefix.replace('.GCODE', '')
+  fileNamePrefix = fileNamePrefix.replace('.Gcode', '')
+  fileNamePrefix = fileNamePrefix.replace('.gco', '')
+  fileNamePrefix = fileNamePrefix.replace('.GCO', '')
+
+  const gcodeName = fileNamePrefix + '_' + hash + '.gcode'
+
+  // now we will modify the print info in the db
+  await db.use({ ns: 'PrintFarm', db: 'users' })
+
+  // now we will upload the file to minio
+  const file = req.files.gcode
+
+  minioClient.putObject(
+    'printfarm',
+    gcodeName,
+    // @ts-expect-error
+    file.data,
+    function (err, etag) {
+      if (err) {
+        console.log(err)
+        return res.status(500).send('Internal server error')
+      } else {
+        return res.status(200).send('File uploaded')
+      }
+    }
+  )
 })
 
 app.post('/upload', async (req: Request, res: Response) => {

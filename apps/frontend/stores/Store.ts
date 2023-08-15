@@ -1,8 +1,9 @@
 //set up mobx store
-import { makeAutoObservable, autorun, reaction } from 'mobx'
+import { makeAutoObservable, observable } from 'mobx'
 
 class Store {
   authenticated = false
+  admin = false
 
   constructor() {
     makeAutoObservable(this)

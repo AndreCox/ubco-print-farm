@@ -1,5 +1,6 @@
 import { env } from 'process'
 import { database } from '../../surreal/surreal'
+import { store } from '../../stores/Store'
 
 class Authenticator {
   userID: string | undefined
@@ -36,14 +37,17 @@ class Authenticator {
           userID: this.userID,
         })
         this.admin = admin[0].result[0].admin
-
+        store.authenticated = true
+        store.admin = this.admin
         return true
       }
     } catch (err) {
       // console.log('Error authenticating user:', err)
+      store.authenticated = false
       return false
     }
     // console.log('User is not authenticated')
+    store.authenticated = false
     return false
   }
 

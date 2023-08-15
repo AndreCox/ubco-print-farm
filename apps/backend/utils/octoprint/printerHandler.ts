@@ -22,6 +22,7 @@ class PrinterHandler {
     this.subscribeToPrinters()
     this.printerPoll()
     this.websocketPoll()
+    this.printJobPoll()
   }
 
   subscribeToPrinters() {
@@ -240,11 +241,32 @@ class PrinterHandler {
     }
   }
 
+  // this will send print jobs to the printers that are online
+  async sendPrintJobs() {
+    await db.use({ ns: 'PrintFarm', db: 'printQueue' })
+    const printJobs = await db.query('SELECT * FROM printJobs')
+    // @ts-expect-error
+    if (printJobs[0].result.length === 0) {
+      // if there are no print jobs then we will exit the function
+      console.log('no print jobs')
+      return
+    } else {
+      console.log('there are print jobs')
+    }
+  }
+
   async getPrinters() {
     await db.use({ ns: 'PrintFarm', db: 'printers' })
     const printers = await db.query('SELECT name, id, apiKey, ip FROM printer')
     // @ts-expect-error
     this.printerArray = printers[0].result
+  }
+
+  async printJobPoll() {
+    // this will try to send print jobs to the printers every 5 seconds
+    setInterval(async () => {
+      await this.sendPrintJobs()
+    }, 5000)
   }
 
   async websocketPoll() {

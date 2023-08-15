@@ -50,9 +50,11 @@ const retreivePrintQueue = async (
   // we need to get the print queue for each user and there emails so we can see who uploaded the file
   // we also want to extract the print queue arrays from the objects to make one big array of print queues
   // we will also add the email to each print queue object
+  // we also want to make sure that the print queue is not null
+  // and we want to make sure that printQueue[*].status is queued
 
   const printQueuesAndEmails = await db.query(
-    'SELECT printQueue, email FROM user'
+    'SELECT printQueue, email FROM user WHERE printQueue IS NOT NULL AND printQueue[*].status = "queued"'
   )
 
   // we have an Array that looks like this [{email: 'email', printQueue: [{printQueueObject}]}]

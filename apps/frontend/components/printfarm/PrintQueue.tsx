@@ -22,7 +22,36 @@ const updatePrintQueue = (database, setPrintQueue) => {
     .catch((err) => {})
 }
 
-export function PrintQueue() {
+const PrintQueueHeaders = () => {
+  return (
+    <div className="flex flex-col px-4">
+      <div className="flex flex-row justify-between ">
+        <div className="w-full">
+          <Typography color="blue-gray" className="text-center mb-2">
+            Print Name
+          </Typography>
+        </div>
+        <div className="w-full">
+          <Typography color="blue-gray" className="text-center mb-2">
+            Status
+          </Typography>
+        </div>
+        <div className="w-full">
+          <Typography color="blue-gray" className="text-center mb-2">
+            Time Remaining
+          </Typography>
+        </div>
+        <div className="invisible pr-2">
+          <Typography color="blue-gray" className="text-center">
+            ❌
+          </Typography>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+const PrintQueue = () => {
   const [printQueue, setPrintQueue] = useState([])
 
   useEffect(() => {
@@ -42,31 +71,7 @@ export function PrintQueue() {
         Print Queue
       </Typography>
       <hr className="mb-4" />
-
-      <div className="flex flex-col px-4">
-        <div className="flex flex-row justify-between ">
-          <div className="w-full">
-            <Typography color="blue-gray" className="text-center mb-2">
-              Print Name
-            </Typography>
-          </div>
-          <div className="w-full">
-            <Typography color="blue-gray" className="text-center mb-2">
-              Status
-            </Typography>
-          </div>
-          <div className="w-full">
-            <Typography color="blue-gray" className="text-center mb-2">
-              Time Remaining
-            </Typography>
-          </div>
-          <div className="invisible pr-2">
-            <Typography color="blue-gray" className="text-center">
-              ❌
-            </Typography>
-          </div>
-        </div>
-      </div>
+      <PrintQueueHeaders />
       <hr className="mb-4" />
       <div className="flex flex-col px-4 space-y-4 h-full mb-4">
         {printQueue.length === 0 && (
@@ -148,3 +153,5 @@ export function PrintQueue() {
     </Card>
   )
 }
+
+export default PrintQueue

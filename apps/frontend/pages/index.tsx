@@ -191,6 +191,9 @@ export default function Home({ loadingMessage }) {
             </Timeline>
           </div>
         </div>
+
+        <hr className="border-white my-12" />
+
         <div className="mt-12">
           <Typography variant="h3" color="blue-gray" className="text-center">
             About
